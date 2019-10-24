@@ -1,0 +1,28 @@
+var TwitterPackage = require('twitter');
+
+var secret = {
+		consumer_key: '',
+		  consumer_secret: '',
+		  access_token_key: '',
+		  access_token_secret: ''
+}
+var Twitter = new TwitterPackage(secret);
+var tweetId;
+Twitter.stream('statuses/filter', {track: '#SAP' || '@SAP'}, function(stream) {
+  stream.on('data', function(tweet) {
+      console.log(tweet.id);
+
+          //retweet code
+          Twitter.post('statuses/retweet/' + tweet.id_str,  function(error, tweet, response){
+              if(error){
+                  console.log(error);
+              }
+              console.log(tweet);  // Tweet body.
+          //  console.log(response);  // Raw response object.
+          });
+  });
+
+  stream.on('error', function(error) {
+      console.log(error);
+  });
+});

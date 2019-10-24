@@ -1,0 +1,15 @@
+{
+  "name": "firstBotinCF",
+  "version": "1.0.0",
+  "description": "My first project",
+  "main": "listen & retweet.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sentiment": "*",
+    "twitter": "*",
+    "sentimental": "*"
+  },
+  "scripts": {
+    "start": "node 'listen & retweet.js'"
+  }
+}
